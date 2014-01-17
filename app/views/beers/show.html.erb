@@ -17,10 +17,21 @@
 
 <% if @beer.ratings.empty? %>
  Beer has not yet been rated!
+</br>
 <% else %>
- Beer has some ratings, average 
+ Beer has <%= pluralize(@beer.ratings.count, 'rating') %>, average  
+ <%= @beer.average_count %>
+
+ 
+
+ 
+
+
+
+
 <% end %>
 
+</br></br>
 <%= link_to 'Edit', edit_beer_path(@beer) %> |
 <%= link_to 'Back', beers_path %>
 
