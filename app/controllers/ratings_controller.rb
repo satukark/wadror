@@ -3,5 +3,4 @@ class RatingsController < ApplicationController
       @ratings = Rating.all
   end
 
-  
 end

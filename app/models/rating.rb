@@ -6,5 +6,4 @@ class Rating < ActiveRecord::Base
     b = Beer.find_by id:beer_id
     return b.name + ": "  + "#{score}"
   end
-  
 end

@@ -4,6 +4,5 @@ class Beer < ActiveRecord::Base
     
     def average_count
     ratings.average("score")
-	end
-    
+	end  
 end
