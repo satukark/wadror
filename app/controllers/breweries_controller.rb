@@ -1,4 +1,5 @@
 class BreweriesController < ApplicationController
+  before_filter :authenticate, :only => [:destroy]
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
 
   # GET /breweries
@@ -71,4 +72,13 @@ class BreweriesController < ApplicationController
     def brewery_params
       params.require(:brewery).permit(:name, :year)
     end
+    
+    def authenticate
+   admin_accounts = { "admin" => "secret", "pekka" => "beer", "arto" => "foobar", "matti" => "ittam"}
+   authenticate_or_request_with_http_basic do |username, password|
+      username == username and password == password
+
+    end
+  end
+  
 end
