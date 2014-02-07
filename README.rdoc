@@ -1,2 +1,1 @@
-http://vko1.herokuapp.com  --- 
-http://vko1.herokuapp.com/breweries
+--- http://vko1.herokuapp.com  --- 
