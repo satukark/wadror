@@ -25,4 +25,16 @@ describe "Rating" do
     expect(beer1.ratings.count).to eq(1)
     expect(beer1.average_rating).to eq(15.0)
   end
+  
+  it "all ratings are shown on the ratings page" do
+    create_beers_with_ratings(1,2,3, user)
+    visit ratings_path
+    expect(page).to have_content 'Number of ratings: 3'
+    expect(page).to have_content 'anonymous 1'
+    expect(page).to have_content 'anonymous 2'
+    expect(page).to have_content 'anonymous 3'
+    save_and_open_page
+
+  end
+  
 end
