@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.0.0
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: VjMHeeIUfG7RtHCiB6nmBf+mni3cjCfxOwRuGGRA6FEonzX32yQ6MUhuEcGAcfnxNPDAHnPKyAwaiVb2TazVXyvnzbSW7GBrlENFW3I7hytSaaG1yKaZSdv786Py/0wkA+YguFS4GetiHrd8gY6VaWEpU7a5j22A39Cj5qEI2lo=
+  app: vko1
+  on:
+    repo: satukark/wadror
