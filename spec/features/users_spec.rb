@@ -13,6 +13,11 @@ describe "User" do
 
       expect(page).to have_content 'Welcome back!'
       expect(page).to have_content 'Pekka'
+      BeerClub
+			BeerClubsController
+			Rating
+			MembershipsController
+			ApplicationController
     end
 
     it "is redirected back to signin form if wrong credentials given" do

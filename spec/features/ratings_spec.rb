@@ -7,6 +7,8 @@ describe "Rating" do
   let!(:beer1) { FactoryGirl.create :beer, name:"iso 3", brewery:brewery }
   let!(:beer2) { FactoryGirl.create :beer, name:"Karhu", brewery:brewery }
   let!(:user) { FactoryGirl.create :user }
+  let!(:user2) { FactoryGirl.create :user, username:"Matt" }
+
 
   before :each do
     sign_in(username:"Pekka", password:"Foobar1")
@@ -33,8 +35,28 @@ describe "Rating" do
     expect(page).to have_content 'anonymous 1'
     expect(page).to have_content 'anonymous 2'
     expect(page).to have_content 'anonymous 3'
-    save_and_open_page
-
+  end
+  
+  it "user's all ratings are shown on the user's page" do
+    create_beers_with_ratings(1,2,3, user)
+    create_beers_with_ratings(5,10,15, user2)
+    visit user_path(user)
+    expect(page).to have_content 'has done 3 ratings, average 2'
+    expect(page).to have_content 'anonymous 1'
+    expect(page).not_to have_content 'anonymous 15'
+    expect(page).to have_content 'anonymous 2'
+    expect(page).to have_content 'anonymous 3'
+    #save_and_open_page
+  end
+  
+  it "user can delete his rating and it will be deleted from db" do
+    create_beers_with_ratings(1,2,3, user)
+    create_beers_with_ratings(5, user2)
+    visit user_path(user)
+    page.all(:link,"delete")[1].click
+    visit ratings_path
+    expect(page).to have_content 'Number of ratings: 3'
+    expect(page).not_to have_content '2'
   end
   
 end
