@@ -4,8 +4,10 @@ include OwnTestHelper
 
 describe "Rating" do
   let!(:brewery) { FactoryGirl.create :brewery, name:"Koff" }
+  let!(:brewery2) { FactoryGirl.create :brewery, name:"Panimo2" }
   let!(:beer1) { FactoryGirl.create :beer, name:"iso 3", brewery:brewery }
   let!(:beer2) { FactoryGirl.create :beer, name:"Karhu", brewery:brewery }
+  let!(:beer3) { FactoryGirl.create :beer, name:"Olut", brewery:brewery2 }
   let!(:user) { FactoryGirl.create :user }
   let!(:user2) { FactoryGirl.create :user, username:"Matt" }
 
@@ -58,5 +60,17 @@ describe "Rating" do
     expect(page).to have_content 'Number of ratings: 3'
     expect(page).not_to have_content '2'
   end
+  
+  it "user's favourite beer style nad brewery is on the user's page" do
+    rating = Rating.create  beer:beer1, score:10, user:user
+    rating = Rating.create  beer:beer1, score:20, user:user
+    rating = Rating.create  beer:beer3, score:3, user:user
+    visit user_path(user)
+    expect(page).to have_content 'style of beer: Lager'
+    expect(page).to have_content 'Favorite brevery: Koff'
+    save_and_open_page
+  end
+  
+  
   
 end
