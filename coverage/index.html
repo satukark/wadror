@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-09T23:52:05+01:00">2014-02-09T23:52:05+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-09T23:59:31+01:00">2014-02-09T23:59:31+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.02
+         2.03
        </span>
     </span> hits/line)
   </h2>
@@ -167,7 +167,7 @@
         <td>25</td>
         <td>25</td>
         <td>0</td>
-        <td>6.6</td>
+        <td>6.7</td>
       </tr>
       
       <tr>
@@ -3792,8 +3792,8 @@
           <code class="ruby">    group_by_style = ratings.group_by { |s| s.beer.style }</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="33">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="11" data-linenumber="33">
+          <span class="hits">11</span>
           
           <code class="ruby">    (average_ratings group_by_style).max_by { |style, average| average }[0]</code>
         </li>
@@ -3822,14 +3822,14 @@
           <code class="ruby">    groups.keys.each do |key|</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="38">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="41" data-linenumber="38">
+          <span class="hits">41</span>
           
           <code class="ruby">      sum = groups[key].inject(0.0) { |sum, rating| sum + rating.score }</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="39">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="17" data-linenumber="39">
+          <span class="hits">17</span>
           
           <code class="ruby">      groups[key] = sum / groups[key].count</code>
         </li>
@@ -4179,7 +4179,7 @@
         <li class="covered" data-hits="6" data-linenumber="8">
           <span class="hits">6</span>
           
-          <code class="ruby">  let!(:beer1) { FactoryGirl.create :beer, name:&quot;iso 3&quot;, brewery:brewery }</code>
+          <code class="ruby">  let!(:beer1) { FactoryGirl.create :beer, name:&quot;iso 3&quot;, brewery:brewery, style:&quot;Pale Ale&quot; }</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="9">
@@ -4191,7 +4191,7 @@
         <li class="covered" data-hits="6" data-linenumber="10">
           <span class="hits">6</span>
           
-          <code class="ruby">  let!(:beer3) { FactoryGirl.create :beer, name:&quot;Olut&quot;, brewery:brewery2 }</code>
+          <code class="ruby">  let!(:beer3) { FactoryGirl.create :beer, name:&quot;Olut&quot;, brewery:brewery2, style:&quot;Lager&quot; }</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="11">
@@ -4515,7 +4515,7 @@
         <li class="covered" data-hits="1" data-linenumber="64">
           <span class="hits">1</span>
           
-          <code class="ruby">  it &quot;user&#39;s favourite beer style is on the user&#39;s page&quot; do</code>
+          <code class="ruby">  it &quot;user&#39;s favourite beer style nad brewery is on the user&#39;s page&quot; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="65">
@@ -4545,13 +4545,13 @@
         <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_content &#39;style of beer:&#39;</code>
+          <code class="ruby">    expect(page).to have_content &#39;style of beer: Pale Ale&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="70">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_content &#39;Favorite brevery:&#39;</code>
+          <code class="ruby">    expect(page).to have_content &#39;Favorite brevery: Koff&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="71">
