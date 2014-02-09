@@ -35,7 +35,8 @@
 
 <% end %>
 <p>
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> 
+<%= link_to 'Edit brewery', edit_brewery_path(@brewery) %> |
+<%= link_to 'Destroy brewery', @brewery, method: :delete, data: { confirm: 'Are you sure?' } %>  |
 
 </br></br>
 

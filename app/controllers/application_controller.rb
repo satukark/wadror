@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) 
   end
   
+  def ensure_that_signed_in 
+    redirect_to signin_path, notice:'You should be signed in' if current_user.nil?
+  end
+  
+  def ensure_that_user_is_admin
+    redirect_to current_user, notice:'You should have admin rights' if not current_user.admin?
+  end
+  
 end
