@@ -68,7 +68,6 @@ describe "Rating" do
     visit user_path(user)
     expect(page).to have_content 'style of beer: Pale Ale'
     expect(page).to have_content 'Favorite brevery: Koff'
-    save_and_open_page
   end
   
   
