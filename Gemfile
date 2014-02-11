@@ -61,8 +61,6 @@ gem 'travis'
 
 gem 'httparty'
 
-gem 'webmock'
-
 gem "rails-settings-cached", "0.3.1"
 
 group :test do
@@ -71,5 +69,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov', require: false
+  gem 'webmock'
+
 
 end
