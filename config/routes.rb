@@ -8,6 +8,9 @@ Ratebeer::Application.routes.draw do
   resources :beers
 
   resources :breweries
+  
+  resources :places, only:[:index, :show]
+
     
     root :to => 'breweries#index'        
     get 'kaikki_bisset', to: 'beers#index'
@@ -24,6 +27,8 @@ Ratebeer::Application.routes.draw do
 	
 	get 'places', to: 'places#index'
 	post 'places', to:'places#search'
+	
+	
 
 
 
