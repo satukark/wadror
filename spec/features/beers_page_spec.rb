@@ -13,11 +13,12 @@ describe "Beers page" do
   
   it "should have valid beer name" do
     FactoryGirl.create :user
+    FactoryGirl.create :style
     sign_in(username:"Pekka", password:"Foobar1")
     user = User.create username:"Pekka"
     visit new_beer_path
     fill_in('beer_name', with:"")
-    select('Lager', from:'beer[style]')
+    select('Lager', from:'beer[style_id]')
     select('anonymous', from:'beer[brewery_id]')
 
     click_button "Create Beer"

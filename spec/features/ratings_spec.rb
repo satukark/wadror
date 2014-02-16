@@ -5,9 +5,11 @@ include OwnTestHelper
 describe "Rating" do
   let!(:brewery) { FactoryGirl.create :brewery, name:"Koff" }
   let!(:brewery2) { FactoryGirl.create :brewery, name:"Panimo2" }
-  let!(:beer1) { FactoryGirl.create :beer, name:"iso 3", brewery:brewery, style:"Pale Ale" }
-  let!(:beer2) { FactoryGirl.create :beer, name:"Karhu", brewery:brewery }
-  let!(:beer3) { FactoryGirl.create :beer, name:"Olut", brewery:brewery2, style:"Lager" }
+  let!(:style) { FactoryGirl.create :style, name:"Lager" }
+  let!(:style2) { FactoryGirl.create :style, name:"Pale Ale" }
+  let!(:beer1) { FactoryGirl.create :beer, name:"iso 3", brewery:brewery, style:style }
+  let!(:beer2) { FactoryGirl.create :beer, name:"Karhu", brewery:brewery, style:style }
+  let!(:beer3) { FactoryGirl.create :beer, name:"Olut", brewery:brewery2, style:style2 }
   let!(:user) { FactoryGirl.create :user }
   let!(:user2) { FactoryGirl.create :user, username:"Matt" }
 
@@ -66,7 +68,7 @@ describe "Rating" do
     rating = Rating.create  beer:beer1, score:20, user:user
     rating = Rating.create  beer:beer3, score:3, user:user
     visit user_path(user)
-    expect(page).to have_content 'style of beer: Pale Ale'
+    expect(page).to have_content 'style of beer: Lager'
     expect(page).to have_content 'Favorite brevery: Koff'
   end
   
