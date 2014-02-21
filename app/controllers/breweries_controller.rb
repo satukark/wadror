@@ -9,6 +9,13 @@ class BreweriesController < ApplicationController
   # GET /breweries.json
   def index
     @breweries = Brewery.all
+    
+      order = params[:order] || 'name'
+
+    case order
+      when 'name' then @breweries.sort_by!{ |b| b.name }
+      when 'year' then @breweries.sort_by!{ |b| b.year }
+    end
   end
 
   # GET /breweries/1
@@ -64,6 +71,9 @@ class BreweriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+    def nglist
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -75,6 +85,7 @@ class BreweriesController < ApplicationController
     def brewery_params
       params.require(:brewery).permit(:name, :year)
     end
+    
     
     def authenticate
    admin_accounts = { "admin" => "secret", "pekka" => "beer", "arto" => "foobar", "matti" => "ittam"}

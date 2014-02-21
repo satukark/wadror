@@ -63,6 +63,14 @@ gem 'httparty'
 
 gem "rails-settings-cached", "0.3.1"
 
+gem 'byebug', group: [:development, :test]
+
+gem 'jquery-turbolinks'
+
+
+
+
+
 group :test do
   gem 'rspec-rails', '~> 2.14.1'
   gem 'factory_girl_rails'
@@ -70,6 +78,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'webmock'
-
+  gem 'selenium-webdriver' 
+  gem 'database_cleaner', '< 1.1.0'
 
 end

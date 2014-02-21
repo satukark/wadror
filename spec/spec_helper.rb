@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'simplecov'
 require 'webmock/rspec'
+
 SimpleCov.start
 
 # Requires supporting ruby files with custom matchers and macros, etc,
