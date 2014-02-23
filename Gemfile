@@ -72,9 +72,9 @@ group :development do
   gem 'rails_layout'
 end
 
+gem 'rack-mini-profiler'
 
-
-
+gem 'omniauth-facebook'
 
 group :test do
   gem 'rspec-rails', '~> 2.14.1'

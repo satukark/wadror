@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include RatingAverage
 
   validates :username, uniqueness: true,
-                       length: { in: 3..15 }
+                       length: { in: 3..30 }
 
   validates :password, length: { minimum: 3 },
                        format: { with: /.*(\d.*[A-Z]|[A-Z].*\d).*/,
@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
   has_many :beers, through: :ratings
   has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :memberships
-  
+    
   def favorite_beer
     return nil if ratings.empty?
-    ratings.order(score: :desc).limit(1).first.beer
+    ratings.sort_by{ |r| r.score }.last.beer
   end
   
   def favorite_brewery
@@ -40,5 +40,20 @@ class User < ActiveRecord::Base
     end
     return groups
   end
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.username = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      password = "Facebook1"
+   	  user.password = password
+      user.password_confirmation = password
+      user.save!
+    end
+  end
+ 
 end
 

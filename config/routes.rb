@@ -24,7 +24,7 @@ Ratebeer::Application.routes.draw do
     get 'signup', to: 'users#new'
     resources :sessions, only: [:new, :create, :destroy]
     
-    get 'signin', to: 'sessions#new'
+  get 'signin', to: 'sessions#new'
 	delete 'signout', to: 'sessions#destroy'
 	
 	get 'places', to: 'places#index'
@@ -33,10 +33,14 @@ Ratebeer::Application.routes.draw do
 	get 'beerlist', to:'beers#list'
 	get 'ngbeerlist', to:'beers#nglist'
 	get 'ngbrewerylist', to:'breweries#nglist'
-
-
 	
-	
+	resources :breweries do
+    post 'toggle_activity', on: :member
+  end
+  
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
+  get 'auth:/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy'
 
 
 
