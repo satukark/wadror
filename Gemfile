@@ -67,6 +67,11 @@ gem 'byebug', group: [:development, :test]
 
 gem 'jquery-turbolinks'
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 
 
 
