@@ -1,4 +1,4 @@
---- http://vko1.herokuapp.com  ---  
+--- http://ratebeers.herokuapp.com  ---  
 
 {<img src="https://travis-ci.org/satukark/wadror.png?branch=master" alt="Build Status" />}[https://travis-ci.org/satukark/wadror]
 {<img src="https://codeclimate.com/github/satukark/wadror.png" />}[https://codeclimate.com/github/satukark/wadror]
